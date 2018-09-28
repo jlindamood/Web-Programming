@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="hwk2.css">
+	<title>LINDA140 myWidgets</title>
+</head>
+<body>
+<nav>
+  <a href="calendar.html">Calendar</a>
+  <a href="form.html">Form</a>
+  <a href="myWidgets.html">myWidgets</a>
+</nav>
+<br />
+<a class="twitter-timeline" data-width="500" data-height="500" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js"></script>
+
+<iframe width="500" height="350"
+src="https://www.youtube.com/embed/videoseries?list=PLtn57NsUdLz7Phy4bzX0f3d5_eAQQ7FCA" allow="utoplay; encrypted-media" allowfullscreen></iframe>
+
+<br/>
+<h1> TIC-TAC-TOE </h1>
+
+<form>
+<input type="text" maxlength=5 name="value" id="value" />
+</form>
+<form>
+<input type="radio" name="team" value="X">X<br/>
+<input type="radio" name="team" value="O">O<br/>
+</form>
+<form>
+<input type="button" value="submit" onclick="ticTacToe()" />
+<input type="button" value="clear" onclick="tttClear()" />
+</form>
+
+<table>
+	<tr>
+		<th class="ttt" id="one">
+			ONE
+		</th>
+		<th class="ttt" id="two">
+			TWO
+		</th>
+		<th class="ttt" id="three">
+			THREE
+		</th>
+	</tr>
+	<tr>
+		<th class="ttt" id="four">
+			FOUR
+		</th>
+		<th class="ttt" id="five">
+			FIVE
+		</th>
+		<th class="ttt" id="six">
+			SIX
+		</th>
+	</tr>
+	<tr>
+		<th class="ttt" id="seven">
+			SEVEN
+		</th>
+		<th class="ttt" id="eight">
+			EIGHT
+		</th>
+		<th class="ttt" id="nine">
+			NINE
+		</th>
+	</tr>
+</table>
+<script>
+function ticTacToe() {
+	var val = document.getElementById('value').value.toLowerCase();
+	var square = document.getElementById(val);
+	var team_color;
+	var radios = document.getElementsByName('team');
+
+	for (var i = 0; i < radios.length; i++) {
+		if (radios[i].checked) {
+			team_color = radios[i].value;
+			break;
+		}
+	}
+
+	square.className = team_color;
+
+}
+
+function tttClear() {
+	var xs = document.getElementsByClassName('X');
+	var os = document.getElementsByClassName('O');
+
+	while (xs.length) {
+		xs[0].className = "ttt";
+	}
+	while (os.length) {
+		os[0].className = "ttt";
+	}
+}
+</script>
+
+</body>
+</html>

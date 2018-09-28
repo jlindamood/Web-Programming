@@ -1,0 +1,58 @@
+table {
+	background-color: lightblue;
+    border: solid;
+}
+th {
+	border-bottom: solid .5px;
+}
+h2 {
+	background-color: tomato;
+}
+nav {
+	overflow: hidden;
+	background-color: #333;
+    
+}
+a {
+	float: left;
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+}
+
+img {
+	height: auto;
+	width: 100px;
+	display: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#bigpic {
+	display: block;
+	width: 500px;
+}
+
+th:hover img {
+	display: block;
+}
+
+.ttt {
+	background-color: grey;
+	color: white;
+}
+
+.X {
+	background-color: black;
+	color: red;
+}
+
+.O {
+	background-color: white;
+	color: green;
+}
+
+.twitter-timeline {
+	data-width: 500px;
+	data-height: 500px;
+}
