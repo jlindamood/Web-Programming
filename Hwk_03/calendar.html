@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="hwk2.css">
+	<title> LINDA140 Calendar </title>
+</head>
+<body>
+<nav>
+  <a href="calendar.html">Calendar</a>
+  <a href="form.html">Form</a>
+  <a href="myWidgets.html">myWidgets</a>
+</nav>
+<br />
+<div id="google_translate_element"></div> 
+  
+<script type="text/javascript"> 
+function googleTranslateElementInit() { 
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element'); 
+} 
+</script> 
+  
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> 
+
+<br />
+	<table>
+    	<tr>
+        	<th>Monday</th>
+            <th class="event"><p class="eventname">Programming Languages</p>
+            	<p>9:45 - 11:00</p>
+                <p class="loc">Kenneth H. Keller Hall, 200 Union St SE, Minneapolis, MN 55455</p>
+                <!--<img src="kellerhall.jpg" alt="">-->
+            </th>
+            <th>
+            </th>
+            <th class="event"><p class="eventname">Web Programming</p>
+            	<p>2:30 - 3:45</p>
+                <p class="loc">Anderson Hall, 257 19th Ave S, Minneapolis, MN 55455</p>
+                <!--<img src="andersonhall.jpg" alt="">-->
+            </th>
+        </tr>
+        <tr>
+        	<th>Tuesday</th>
+            <th class="event"><p class="eventname">Intro to Data Mining</p>
+            	<p>9:45 - 11:00</p>
+                <p class="loc">Kenneth H. Keller Hall, 200 Union St SE, Minneapolis, MN 55455</p>
+                <!--<img src="kellerhall.jpg" alt="">-->
+            </th>
+            <th><p>Program Design and Development</p>
+            	<p>1:00 - 2:15</p>
+                <p>Robert H. Bruininks Hall, 222 Pleasant St SE, Minneapolis, MN 55455</p>
+                <!--<img src="bruininkshall.jpg" alt="">-->
+            </th>
+            <th class="event"><p class="eventname">Real-time Embedded Systems</p>
+            	<p>2:30 - 3:45</p>
+                <p class="loc">Robert H. Bruininks Hall, 222 Pleasant St SE, Minneapolis, MN 55455</p>
+                <!--<img src="bruininkshall.jpg" alt="">-->
+            </th>
+        </tr>
+        <tr>
+            <th>Wednesday</th>
+            <th class="event"><p class="eventname">Programming Languages</p>
+                <p>9:45 - 11:00</p>
+                <p class="loc">Kenneth H. Keller Hall, 200 Union St SE, Minneapolis, MN 55455</p>
+                <!--<img src="kellerhall.jpg" alt="">-->
+            </th>
+            <th>
+            </th>
+            <th class="event"><p class="eventname">Web Programming</p>
+                <p>2:30 - 3:45</p>
+                <p class="loc">Anderson Hall, 257 19th Ave S, Minneapolis, MN 55455</p>
+                <!--<img src="andersonhall.jpg" alt="">-->
+            </th>
+        </tr>
+        <tr>
+            <th>Thursday</th>
+            <th class="event"><p class="eventname">Intro to Data Mining</p>
+                <p>9:45 - 11:00</p>
+                <p class="loc">Kenneth H. Keller Hall, 200 Union St SE, Minneapolis, MN 55455</p>
+                <!--<img src="kellerhall.jpg" alt="">-->
+            </th>
+            <th class="event"><p class="eventname">Program Design and Development</p>
+                <p>1:00 - 2:15</p>
+                <p class="loc">Robert H. Bruininks Hall, 222 Pleasant St SE, Minneapolis, MN 55455</p>
+                <!--<img src="bruininkshall.jpg" alt="">-->
+            </th>
+            <th class="event"><p class="eventname">Real-time Embedded Systems</p>
+                <p>2:30 - 3:45</p>
+                <p class="loc">Robert H. Bruininks Hall, 222 Pleasant St SE, Minneapolis, MN 55455</p>
+                <!--<img src="bruininkshall.jpg" alt="">-->
+            </th>
+        </tr>
+        <tr>
+        	<th>Friday</th>
+            <th>
+            </th>
+            <th>
+            </th>
+            <th class="event"><p class="eventname">Programming Design and Development Disc.</p>
+            	<p>2:30 - 3:20</p>
+                <p class="loc">Robert H. Bruininks Hall, 222 Pleasant St SE, Minneapolis, MN 55455</p>
+                <!--<img src="bruininkshall.jpg" alt="">-->
+            </th>
+        </tr>
+        
+    </table>
+
+    <div id="left-panel"></div>
+    <div id="forms">
+    <form name="placesForm">
+        Find Nearby <br>
+        <br>
+        Category:<br>
+        <select name="category" required>
+            <option value="">Choose</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="hospital">Hospital</option>
+            <option value="parking">Parking</option>
+            <option value="supermarket">Supermarket</option>
+            <option value="other">Other</option>
+        </select>
+        Other:<br>
+        <input type="text" name="other_search">
+        <br>
+        Radius (meters):<br>
+        <input type="text" name="radius" required>
+        <br>
+        <br><br>
+        <input type="button" value="Submit" onclick="getNearby();">
+    </form> 
+
+    <form name="directionsForm">
+        Directions <br>
+        Destination Address<br>
+        <input type="text" name="dest_addr" required>
+        <br>
+        Travel Mode:<br>
+        <input type="radio" name="travel_mode" value="DRIVING">DRIVING<br/>
+        <input type="radio" name="travel_mode" value="WALKING">WALKING<br/>
+        <input type="radio" name="travel_mode" value="TRANSIT">TRANSIT<br/>
+        <br><br>
+        <input type="button" value="Go" onclick="getDirections();">
+    </form> 
+    </div>
+    <div id="map"></div>
+
+    <script>
+    var marker2;
+    var infowindow2
+    var map;
+    var myLatLng;
+    var placesService;
+    var directionsService;
+    var directionsDisplay;
+    var markers = [];
+
+    function initMap() {
+        myLatLng = {lat: 44.9727, lng: -93.235400003};
+        directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatLng,
+          zoom: 14
+        });
+
+        var geocoder = new google.maps.Geocoder(); // Create a geocoder object
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById('left-panel'));
+        placesService = new google.maps.places.PlacesService(map);
+        genMarkerInfo(geocoder);
+    }
+
+    // This function takes a geocode object, a map object, and an address, and 
+    // if successful in finding the address, it places a marker with a callback that shows an 
+    // info window when the marker is "clicked"
+    function geocodeAddress(geocoder, resultsMap, address, name) {
+ 
+        geocoder.geocode({'address': address}, function(results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    marker2 = new google.maps.Marker({
+                                map: resultsMap,
+                                position: results[0].geometry.location,
+                                title:name + "\n" + address
+                                });
+                    infowindow2 = new google.maps.InfoWindow({
+                                content: name + ",\n" + address
+                                });
+    
+                    google.maps.event.addListener(marker2, 'click', createWindow(resultsMap,infowindow2, marker2));
+
+                    markers.push(marker2);
+            } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+            } //end if-then-else
+        }); // end call to geocoder.geocode function
+    } // end geocodeAddress function
+    
+    // Function to return an anonymous function that will be called when the rmarker created in the 
+    // geocodeAddress function is clicked   
+    function createWindow(rmap, rinfowindow, rmarker){
+              return function(){
+                rinfowindow.open(rmap, rmarker);
+            }
+    }//end create (info) window
+
+    function genMarkerInfo(geocoder) {
+        var events = document.getElementsByClassName('event');
+        var events_formatted = [];
+        var places_tuples = [];
+        for (var i = events.length - 1; i >= 0; i--) {
+            places_tuples.push( [events[i].getElementsByClassName('loc')[0].innerText, events[i].getElementsByClassName('eventname')[0].innerText] )
+
+        }
+
+        var places_tuples_reduced = [...new Set(places_tuples)]
+
+        for (var i = places_tuples_reduced.length - 1; i >= 0; i--) {
+            geocodeAddress(geocoder, map, places_tuples_reduced[i][0], places_tuples_reduced[i][1]);
+            }
+    }
+
+    function getNearby() {
+        var cat = document.forms["placesForm"]["category"].value;
+        var other = document.forms["placesForm"]["other_search"].value;
+        var rad = document.forms["placesForm"]["radius"].value;
+        var request;
+
+        if (cat == "" || rad == "") {
+            window.alert("Category and Radius need to be filled.");
+            return;
+        }
+
+        if (cat == "other" && other == "") {
+            window.alert("Please fill out Other:");
+            return;
+        }
+
+        if (cat != "other") {
+            request = {
+                location: myLatLng,
+                radius: rad,
+                type: [cat]
+            };
+            placesService.nearbySearch(request, nbsCallback);
+        } else {
+            request = {
+                location: myLatLng,
+                radius: rad,
+                query: other
+            };
+            placesService.textSearch(request, tsCallback);
+        };
+
+    }
+
+    function nbsCallback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            deleteMarkers();
+            createMarkers(results);
+        }
+    }
+
+    function tsCallback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            deleteMarkers();
+            createMarkers(results);
+        }
+    }
+
+    function createMarkers(places) {
+        var bounds = new google.maps.LatLngBounds();
+        var placesList = document.getElementById('places');
+
+        for (var i = 0, place; place = places[i]; i++) {
+            var image = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+            };
+
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: image,
+                title: place.name,
+                position: place.geometry.location
+            });
+
+            var li = document.createElement('li');
+            li.textContent = place.name;
+            placesList.appendChild(li);
+
+            markers.push(marker);
+
+            bounds.extend(place.geometry.location);
+        }
+        map.fitBounds(bounds);
+    }
+
+    function deleteMarkers() {
+        var placesList = document.getElementById('places');
+        placesList.innerHTML = "";
+        for(var i=0; i<markers.length; i++){
+            markers[i].setMap(null);
+        }
+        markers = [];
+    }
+
+    
+    function getDirections() {
+        var start = myLatLng;
+        var end = document.forms["directionsForm"]["dest_addr"].value;
+        var trv = document.forms["directionsForm"]["travel_mode"].value;
+
+        if (end == "" || trv == "") {
+            window.alert("Destination and travel mode need to be filled.");
+            return;
+        }
+
+        var request = {
+            origin: myLatLng,
+            destination: end,
+            travelMode: trv
+        };
+        directionsService.route(request, function(result, status) {
+            if (status == 'OK') {
+                deleteMarkers();
+                directionsDisplay.setDirections(result);
+            } else {
+                alert("Could not display directions because " + status);
+            }
+        });
+    }
+    
+
+    </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFfht8KfgBzSDmVIjqiOE39_DriTreYK4&callback=initMap&libraries=places" async defer></script>
+
+<div id="places"></div>
+
+</body>
+</html>

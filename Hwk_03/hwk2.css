@@ -1,0 +1,98 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+table {
+	background-color: lightblue;
+    border: solid;
+}
+th {
+	border-bottom: solid .5px;
+}
+h2 {
+	background-color: tomato;
+}
+
+nav {
+	overflow: hidden;
+	background-color: #333;
+}
+
+a {
+	float: left;
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+}
+
+img {
+	height: auto;
+	width: 100px;
+	/*display: none;*/
+	margin-left: auto;
+	margin-right: auto;
+}
+
+th:hover img {
+	display: block;
+}
+#map {
+	height: 50%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 10%;
+	align="middle";
+	display: block;
+}
+
+#google_translate_element {
+	display: block;
+}
+
+.ttt {
+	background-color: grey;
+	color: white;
+}
+
+.X {
+	background-color: black;
+	color: red;
+}
+
+.O {
+	background-color: white;
+	color: green;
+}
+
+#left-panel, #forms {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+}
+
+#left-panel select, #left-panel input, {
+  font-size: 15px;
+}
+
+#left-panel select, #forms select {
+  width: 100%;
+}
+
+#left-panel i, #forms i {
+  font-size: 12px;
+}
+#left-panel, #forms {
+  height: 50%;
+  float: left;
+  width: 390px;
+  overflow: auto;
+  margin-top: 10%;
+}
+#map {
+  margin-left: 400px;
+  margin-right: 400px;
+}
+#forms {
+	float: right;
+}
